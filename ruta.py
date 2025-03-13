@@ -72,6 +72,32 @@ ruta, costo = arbol_rutas.mejor_ruta(origen, destino)
 
 if ruta:
     print(f"La mejor ruta es: {' -> '.join([nodo.nombre for nodo in ruta])} con un costo total de {costo}")
+
+
+
+
+
+
+
+
+
+import networkx as nx
+import matplotlib.pyplot as plt
+
+# Crear un grafo vacío 
+G = nx.Graph()
+
+# Agregar nodos y aristas
+G.add_nodes_from(["A", "B", "C", "D", "E", "F", "G", "H", "I"])
+G.add_edges_from([("A", "B"), ("A", "C"), ("A", "E"), ("A", "G"), ("B", "D"), ("C", "H"), ("C", "F"), ("D", "I"), ("E", "I"), ("F", "H"), ("F", "B"), ("H", "G")])
+
+# Dibujar el grafo
+nx.draw(G, with_labels=True, node_color='yellow', edge_color='black')
+plt.show()
+
+# Encontrar el camino más corto entre dos nodos
+camino_mas_corto = nx.shortest_path(G, source="A", target="I")
+print(f"El camino más corto entre A e I es: {camino_mas_corto}")
 else:
     print("No hay ruta disponible.")
 
